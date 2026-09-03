@@ -23,8 +23,8 @@ contract Parent {
     }
 }
 
-contract Chield is Parent{
-    string public str = f1(); //call only f1 and f3 (f2 private can not inheriate , f4 is a external only call outside solidity or other contract) 
+contract Chield is Parent{ //inheritence
+    string public str = f1(); //call only f1 and f3 (f2 private can not inheriate , f4 is a external only call outside solidity or other contract but not inheriate contract) 
 }
 
 contract OtherContract {

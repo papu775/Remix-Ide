@@ -1,12 +1,4 @@
 {
-  "contracts/4_Basic.sol": {
-    "__sources__": {
-      "contracts/4_Basic.sol": {
-        "content": "// SPDX-License-Identifier: GPL-3.0\n\npragma solidity >=0.7.0 <0.9.0;\n\ncontract Basic {\n    uint public valOne = 50; //state variable //perment store\n    uint public valTwo;\n    bytes2 public str = \"b\"; //store hexa decimal store\n    constructor(uint _val) {\n        valTwo = _val;\n    }\n\n    function setStateVariable(uint val) public {\n        valOne += val;\n    }\n\n    function getStateVariable() public view returns (uint) {\n        return valOne;\n    }\n\n    function localVariable() public pure returns (uint) {\n        uint val = 501; //local variable //when function exists\n        return val;\n    }\n\n    uint public data;\n\n    function forLoopFun() public pure returns (uint) {\n        uint val = 501; //local variable //when function exists\n        for (int i = 0; i <= 3; i++) {\n            val += 1;\n        }\n        return val;\n    }\n\n    \n}\n",
-        "file": "contracts/4_Basic.sol"
-      }
-    }
-  },
   "contracts/2_Owner.sol": {
     "hardhat/console.sol": ".deps/npm/hardhat@3.15.0/console.sol",
     "__sources__": {
@@ -44,19 +36,35 @@
       }
     }
   },
-  "contracts/5_conditional.sol": {
+  "contracts/4_Basic.sol": {
     "__sources__": {
-      "contracts/5_conditional.sol": {
-        "content": "// SPDX-License-Identifier: GPL-3.0\n\npragma solidity >=0.7.0 <0.9.0;\n\ncontract Conditional {\n    \n    modifier geterThenFive(uint params){  //modifier common function\n        require(params<5,\"value must be less then 5\");\n        _;\n    }\n\n    function valadition(uint params) public pure geterThenFive(params) returns(uint){\n        // require(params<5,\"value must be less then 5\");\n        return params;\n    }\n\n    function stringReture(uint val)public pure returns(string memory) {\n        if(val>5){\n            return \"HI\";\n        }else{\n          return \"Hello World\";\n        }\n        \n    }\n}",
-        "file": "contracts/5_conditional.sol"
+      "contracts/4_Basic.sol": {
+        "content": "// SPDX-License-Identifier: GPL-3.0\n\npragma solidity >=0.7.0 <0.9.0;\n\ncontract Basic {\n    uint public valOne = 50; //state variable //perment store\n    uint public valTwo;\n    bytes2 public str = \"b\"; //store hexa decimal store\n    constructor(uint _val) {\n        valTwo = _val;\n    }\n\n    function setStateVariable(uint val) public {\n        valOne += val;\n    }\n\n    function getStateVariable() public view returns (uint) {\n        return valOne;\n    }\n\n    function localVariable() public pure returns (uint) {\n        uint val = 501; //local variable //when function exists\n        return val;\n    }\n\n    uint public data;\n\n    function forLoopFun() public pure returns (uint) {\n        uint val = 501; //local variable //when function exists\n        for (int i = 0; i <= 3; i++) {\n            val += 1;\n        }\n        return val;\n    }\n\n    \n}\n",
+        "file": "contracts/4_Basic.sol"
       }
     }
   },
   "contracts/6_AccessModifiers.sol": {
     "__sources__": {
       "contracts/6_AccessModifiers.sol": {
-        "content": "// SPDX-License-Identifier: GPL-3.0\n\npragma solidity >=0.7.0 <0.9.0;\n\ncontract Parent {\n    function f1() public pure returns (string memory) {\n        f2();\n        f3();\n        // f4(); //can not call only call outside solidity or other contract\n        return \"f1\";\n    }\n\n    function f2() private pure returns (string memory) {\n        return \"f2\";\n    }\n\n    function f3() internal pure returns (string memory) {\n        return \"f3\";\n    }\n\n    function f4() external pure returns (string memory) {\n        return \"f4\";\n    }\n}\n\ncontract Chield is Parent{\n    string public str = f1(); //call only f1 and f3 (f2 private can not inheriate , f4 is a external only call outside solidity or other contract) \n}\n\ncontract OtherContract {\n    Parent obj = new Parent();\n    string public str1 = obj.f4();\n} \n\n\n",
+        "content": "// SPDX-License-Identifier: GPL-3.0\n\npragma solidity >=0.7.0 <0.9.0;\n\ncontract Parent {\n    function f1() public pure returns (string memory) {\n        f2();\n        f3();\n        // f4(); //can not call only call outside solidity or other contract\n        return \"f1\";\n    }\n\n    function f2() private pure returns (string memory) {\n        return \"f2\";\n    }\n\n    function f3() internal pure returns (string memory) {\n        return \"f3\";\n    }\n\n    function f4() external pure returns (string memory) {\n        return \"f4\";\n    }\n}\n\ncontract Chield is Parent{ //inheritence\n    string public str = f1(); //call only f1 and f3 (f2 private can not inheriate , f4 is a external only call outside solidity or other contract but not inheriate contract) \n}\n\ncontract OtherContract {\n    Parent obj = new Parent();\n    string public str1 = obj.f4();\n} \n\n\n",
         "file": "contracts/6_AccessModifiers.sol"
+      }
+    }
+  },
+  "contracts/7_reference.sol": {
+    "__sources__": {
+      "contracts/7_reference.sol": {
+        "content": "// SPDX-License-Identifier: GPL-3.0\n\npragma solidity >=0.7.0 <0.9.0;\n\ncontract Reference {\n    int[5] num; //fixed array\n    string[] num1; //dynamic array\n\n    function getArrayLength()external view returns(uint){\n        return num.length;\n    }\n\n    function setArrayData(uint _data,uint8 _index)external  returns(uint){\n         num[_index] = 89;\n         return _data;\n    }\n\n    function getArr()external view returns(int[5] memory) {\n        return num;\n    }\n\n    struct Student {\n        string name;\n        uint roll;\n        bool result;\n    }\n    Student public s1;\n    function setStudent(string memory _name,uint _roll,bool _result)external {\n        s1 = Student(_name,_roll,_result);\n        // s1.name = _name;\n        // s1.roll=_roll;\n        // s1.result = _result;\n    }\n\n    function getStudent()external view returns(Student memory){\n        return s1;\n    }\n\n    // One D Map\n    mapping (uint=>string) oneDMap;\n\n    function setOneDMap(uint _key,string memory _data)external  {\n        oneDMap[_key]=_data;\n    }\n    function getOneDMap(uint _key)external view returns(string memory) {\n        return oneDMap[_key];\n    }\n\n    //Two D Map\n\n      mapping (uint=>mapping (uint=>string)) twoDMap;\n\n    function setTwoDMap(uint _row,uint _col,string memory _data)external  {\n        twoDMap[_row][_col]=_data;\n    }\n    function getTwoDMap(uint _row,uint _col)external view returns(string memory) {\n        return twoDMap[_row][_col];\n    }\n\n    \n}",
+        "file": "contracts/7_reference.sol"
+      }
+    }
+  },
+  "contracts/5_conditional.sol": {
+    "__sources__": {
+      "contracts/5_conditional.sol": {
+        "content": "// SPDX-License-Identifier: GPL-3.0\n\npragma solidity >=0.7.0 <0.9.0;\n\ncontract Conditional {\n    \n    modifier geterThenFive(uint params){  //modifier common function\n        require(params<5,\"value must be less then 5\");\n        _;\n    }\n\n    function valadition(uint params) public pure geterThenFive(params) returns(uint){\n        // require(params<5,\"value must be less then 5\");\n        return params;\n    }\n\n    function stringReture(uint val)public pure returns(string memory) {\n        if(val>5){\n            return \"HI\";\n        }else{\n          return \"Hello World\";\n        }\n        \n    }\n}",
+        "file": "contracts/5_conditional.sol"
       }
     }
   }
