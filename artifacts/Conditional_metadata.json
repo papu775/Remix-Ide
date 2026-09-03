@@ -1,0 +1,84 @@
+{
+	"compiler": {
+		"version": "0.8.34+commit.80d5c536"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "val",
+						"type": "uint256"
+					}
+				],
+				"name": "stringReture",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "params",
+						"type": "uint256"
+					}
+				],
+				"name": "valadition",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/5_conditional.sol": "Conditional"
+		},
+		"evmVersion": "osaka",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/5_conditional.sol": {
+			"keccak256": "0x419d5341a1b8a8c6febe466d4efc06405bde2fd888fa6ce43de5a321ea74f17a",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://45f81dc8e4d46d6cc6a653b4cc9b85a8ce63cec57297bb4da02d4708d9ec8c11",
+				"dweb:/ipfs/QmPr53R1SYXms1CNeUCnm6BFzaU6rvtH8NeJy8vdoZVvVj"
+			]
+		}
+	},
+	"version": 1
+}
